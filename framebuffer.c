@@ -1,10 +1,33 @@
 #include "colorvalues.h"
+#include "io.h"
+
+/* IO-Port Macros */
+#define CURSOR_COMMAND_PORT 0x3D4
+#define CURSOR_DATA_PORT 0x3D5
+
+/*IO-Command Macros*/
+#define CURSOR_HIGH_BYTE_COMMAND 14
+#define CURSOR_LOW_BYTE_COMMAND 15
 
 char *fb = (char *) 0x000B8000;
 
 unsigned char terminal_row;
 unsigned char terminal_column;
 unsigned char terminal_color;
+
+
+/** fb_move_cursor:
+*  Moves the cursor of the framebuffer to the given position
+*
+*  @param pos The new position of the cursor
+*/
+void move_cursor(unsigned short pos)
+{
+    outb(CURSOR_COMMAND_PORT, CURSOR_HIGH_BYTE_COMMAND);
+    outb(CURSOR_DATA_PORT,    ((pos >> 8) & 0x00FF));
+    outb(CURSOR_COMMAND_PORT, CURSOR_LOW_BYTE_COMMAND);
+    outb(CURSOR_DATA_PORT,    pos & 0x00FF);
+}
 
 /**
  * Calculates the colorcode based on foreground and background value.
@@ -29,6 +52,7 @@ void write_char(char c, unsigned char color, unsigned char x, unsigned char y)
   const unsigned int index = y * 25 + x;
 	fb[index] = c;
   fb[index+1] = color;
+  move_cursor((unsigned short) index);
 }
 
 /**
