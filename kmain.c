@@ -1,6 +1,7 @@
-#include "stdio.h"
+#include "framebuffer.h"
 
 void kmain()
 {
-  fb_write_cell(0, 'A', 2, 8);
+  init_terminal();
+  write_char('A', terminal_color, 0, 0);
 }
