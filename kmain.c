@@ -1,3 +1,3 @@
-void init(){
+void kmain(){
   return;
 }

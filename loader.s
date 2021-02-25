@@ -1,5 +1,7 @@
 global loader
 
+extern kmain
+
 MAGIC_NUMBER equ 0x1BADB002
 FLAGS        equ 0x0
 CHECKSUM     equ -MAGIC_NUMBER
@@ -21,6 +23,9 @@ loader:
 
 stack_setup:
    mov esp, kernel_stack+KERNEL_STACK_SIZE
+
+enter_kmain:
+  call kmain
 
 .loop:
   jmp .loop
