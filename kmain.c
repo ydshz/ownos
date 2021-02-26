@@ -4,6 +4,6 @@
 void kmain()
 {
   init_terminal();
-  char test[] = "Hello Kernel";
-  kwrite(test, 12);
+  //char test[] = "Hello Kernel";
+  kwrite("Hello Kernel", 12);
 }
