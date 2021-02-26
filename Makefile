@@ -10,7 +10,8 @@ all: kernel.elf
 
 kernel.elf: $(OBJECTS)
 	ld $(LDFLAGS) $(OBJECTS) -o kernel.elf
-	run: kernel.elf
+
+run: kernel.elf
 	qemu-system-x86_64 --kernel kernel.elf
 
 debug: kernel.elf
