@@ -13,6 +13,11 @@
     run: kernel.elf
 			qemu-system-x86_64 --kernel kernel.elf
 
+    debug: kernel.elf
+			echo "To debug open gdb and type \"target remote localhost:1234\""
+			qemu-system-x86_64 --kernel kernel.elf -s
+			
+
     %.o: %.c
 			$(CC) $(CFLAGS)  $< -o $@
 
