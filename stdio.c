@@ -7,14 +7,14 @@
  */
 void kwrite(char buffer[], int buffer_len)
 {
-  for(int i=0; i<buffer_len; i++){
-      if(buffer[i] == '\n'){
-        terminal_row++;
-        terminal_column = 0;
-      }
-      else{
-        write_char(buffer[i], terminal_color, terminal_column, terminal_row);
-        terminal_column++;
-      }
-  }
+    for(int i=0; i<buffer_len; i++){
+        if(buffer[i] == '\n'){
+            terminal_row++;
+            terminal_column = 0;
+        }
+        else{
+            write_char(buffer[i], terminal_color, terminal_column, terminal_row);
+            terminal_column++;
+        }
+    }
 }

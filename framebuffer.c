@@ -19,10 +19,10 @@ unsigned char terminal_color;
 
 
 /** fb_move_cursor:
-*  Moves the cursor of the framebuffer to the given position
-*
-*  @param pos The new position of the cursor
-*/
+ *  Moves the cursor of the framebuffer to the given position
+ *
+ *  @param pos The new position of the cursor
+ */
 void move_cursor(unsigned short pos)
 {
     outb(CURSOR_COMMAND_PORT, CURSOR_HIGH_BYTE_COMMAND);
@@ -36,23 +36,23 @@ void move_cursor(unsigned short pos)
  */
 unsigned char calculate_colorcode(unsigned char fg, unsigned char bg)
 {
-  return fg | bg <<4;
-  //return ((fg & 0x0F) << 4) | (bg & 0x0F);
+    return fg | bg <<4;
+    //return ((fg & 0x0F) << 4) | (bg & 0x0F);
 }
 
 /** fb_write_cell:
-*  Writes a character with the given foreground and background to position i
-*  in the framebuffer.
-*
-*  @param i  The location in the framebuffer
-*  @param c  The character
-*  @param fg The foreground color
-*  @param bg The background color
-*/
+ *  Writes a character with the given foreground and background to position i
+ *  in the framebuffer.
+ *
+ *  @param i  The location in the framebuffer
+ *  @param c  The character
+ *  @param fg The foreground color
+ *  @param bg The background color
+ */
 void write_char(unsigned char c, unsigned char color, unsigned char x, unsigned char y)
 {
-  const unsigned int index = y * 80 + x;
-  fb[index] = (uint_16) c | (uint_16) color << 4;
+    const unsigned int index = y * 80 + x;
+    fb[index] = (uint_16) c | (uint_16) color << 4;
 }
 
 /**
@@ -71,9 +71,9 @@ void clean()
  */
 void init_terminal()
 {
-  terminal_row = 0;
-  terminal_column = 0;
-  terminal_color = calculate_colorcode(0, 7);
-  clean();
+    terminal_row = 0;
+    terminal_column = 0;
+    terminal_color = calculate_colorcode(VGA_COLOR_BLACK, VGA_COLOR_LIGHT_GREY);
+    clean();
 }
 

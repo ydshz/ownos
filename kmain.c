@@ -3,6 +3,6 @@
 
 void kmain()
 {
-  init_terminal();
-  kwrite("Hello Kernel\n", 13);
+    init_terminal();
+    kwrite("Hello Kernel\n", 13);
 }
