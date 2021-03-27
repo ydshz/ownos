@@ -1,8 +1,8 @@
 #include "stdio.h"
 #include "framebuffer.h"
-
+#include "security/stacksmash.h"
 void kmain()
 {
     init_terminal();
-    kwrite("Hello Kernel\n", 13);
+    kprintln("Hello Kernel");
 }

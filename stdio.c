@@ -3,6 +3,7 @@
  * This  function provides functionality to write to the framebuffer
  *
  * @param buffer The buffer to print
+ 
  * @param buffer_len The lengthof the buffer
  */
 void kwrite(char buffer[], int buffer_len)
@@ -17,4 +18,13 @@ void kwrite(char buffer[], int buffer_len)
             terminal_column++;
         }
     }
+}
+void kprintln(char buffer[])
+{
+  int size = 0;
+  while(buffer[size] != '\0'){
+    size++;
+  }
+  kwrite(buffer, size);
+  kwrite("\n", 1);
 }
