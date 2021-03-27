@@ -9,12 +9,12 @@ SECTIONS {
         *(.text)             /* all text sections from all files */
     }
 
-    .rodata ALIGN (0x1000) : /* align at 4 KB */
+    .rodata ALIGN (0x2000) : /* align at 8 KB */
     {
         *(.rodata*)          /* all read-only data sections from all files */
     }
 
-    .data ALIGN (0x1000) :   /* align at 4 KB */
+    .data ALIGN (0x2000) :   /* align at 8 KB */
     {
         *(.data)             /* all data sections from all files */
     }
