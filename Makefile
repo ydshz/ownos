@@ -1,6 +1,6 @@
 OBJECTS = loader.o kmain.o framebuffer.o io.o stdio.o security/stacksmash.o panic.o
 CC = gcc
-CFLAGS = -m32 -nostdlib -nostdinc -fno-builtin -fstack-protector-all \
+CFLAGS = -m32 -nostdlib -nostdinc -fno-builtin -fstack-protector-strong \
 		 -nostartfiles -nodefaultlibs -Wall -Wextra -Werror -c
 LDFLAGS = -T linker.ld -melf_i386
 AS = nasm

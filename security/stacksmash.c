@@ -1,7 +1,6 @@
 #include "../panic.h"
-#define STACK_CHK_GUARD 0x595e9fbd94fda766
 
-long long __stack_chk_guard = STACK_CHK_GUARD;
+unsigned int __stack_chk_guard = 0x00000aff;
 
 void __stack_chk_fail(void)
 {
